@@ -1,0 +1,4 @@
+front/node_modules/
+server/http-host/node_module/
+server/http-host/public/images/
+server/http-host/public/javascripts/

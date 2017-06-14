@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Comment = (function () {
-    function Comment(movieId, autor, text, date) {
+    function Comment(id, movieId, autor, text, date) {
+        this.id = id;
         this.movieId = movieId;
         this.autor = autor;
         this.text = text;
