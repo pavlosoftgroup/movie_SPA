@@ -1,0 +1,21 @@
+<md-card>
+    <md-card-header>
+        <md-card-title><h2>{{movie.title}}</h2></md-card-title>
+        <md-card-subtitle>Data: {{movie.year}} Budget: {{movie.budget}}$</md-card-subtitle>
+    </md-card-header>
+
+    <img md-card-image src="https://image.tmdb.org/t/p/w500{{ movie.poster}}">
+
+
+    <md-card-content>
+        <p>
+            {{movie.plot}}
+        </p>
+
+    </md-card-content>
+
+
+    <md-card-actions>
+        <app-comment></app-comment>
+    </md-card-actions>
+</md-card>

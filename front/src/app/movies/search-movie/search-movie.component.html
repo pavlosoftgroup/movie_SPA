@@ -1,0 +1,7 @@
+<form action="">
+  <md-input-container>
+    <input  mdInput [(ngModel)]="selectedValue" name="searsh" placeholder="Search">
+  </md-input-container>
+  <button md-raised-button (click)="searchMovies(selectedValue)">Search</button>
+</form>
+{{selectedValue}}
