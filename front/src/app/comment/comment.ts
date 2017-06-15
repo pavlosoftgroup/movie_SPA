@@ -1,9 +1,9 @@
 export class Comment {
-    constructor(public id: string,
+    constructor(
                 public movieId: string,
                 public autor: string,
                 public text: string,
-                public date: Date,) {
+                public date: any = Date.now(),) {
     }
 
 }

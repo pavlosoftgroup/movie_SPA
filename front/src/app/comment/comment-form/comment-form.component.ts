@@ -1,4 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Comment} from "../comment";
 // import any = jasmine.any;
 
 @Component({
@@ -7,16 +9,30 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
     styleUrls: ['./comment-form.component.css']
 })
 export class CommentFormComponent implements OnInit {
-    @Output() newComment = new EventEmitter<any>();
+    @Output() addComment = new EventEmitter<any>();
+    @Input() movieId: string;
 
-    constructor() {
+
+    constructor(private activatesRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
-    }
+        // console.log(this.movieId);
+   }
 
-    addComment(event: any) {
-        console.log(event);
+    onSubmit(array: string[]) {
+
+
+        let comment = new Comment(
+            this.movieId,
+            array[0],
+            array[1],
+            String(Date.now()),
+        );
+
+
+        this.addComment.emit(comment);
+
 
 
     }

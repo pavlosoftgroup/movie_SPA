@@ -10,29 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var comment_1 = require("../comment");
 // import any = jasmine.any;
 var CommentFormComponent = (function () {
-    function CommentFormComponent() {
-        this.newComment = new core_1.EventEmitter();
+    function CommentFormComponent(activatesRoute) {
+        this.activatesRoute = activatesRoute;
+        this.addComment = new core_1.EventEmitter();
     }
     CommentFormComponent.prototype.ngOnInit = function () {
+        // console.log(this.movieId);
     };
-    CommentFormComponent.prototype.addComment = function (event) {
-        console.log(event);
+    CommentFormComponent.prototype.onSubmit = function (array) {
+        var comment = new comment_1.Comment(this.movieId, array[0], array[1], String(Date.now()));
+        this.addComment.emit(comment);
     };
     return CommentFormComponent;
 }());
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)
-], CommentFormComponent.prototype, "newComment", void 0);
+], CommentFormComponent.prototype, "addComment", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], CommentFormComponent.prototype, "movieId", void 0);
 CommentFormComponent = __decorate([
     core_1.Component({
         selector: 'app-comment-form',
         templateUrl: './comment-form.component.html',
         styleUrls: ['./comment-form.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute])
 ], CommentFormComponent);
 exports.CommentFormComponent = CommentFormComponent;
 //# sourceMappingURL=comment-form.component.js.map

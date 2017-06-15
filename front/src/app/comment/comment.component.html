@@ -1,4 +1,7 @@
-<md-toolbar color="primary">Comments</md-toolbar>
+<md-toolbar color="primary" class="comment-header">
+    <h2>Comments</h2><app-vote class="right" [movieId]="movieId"></app-vote></md-toolbar>
 
-<app-comment-form></app-comment-form>
-<app-comment-list></app-comment-list>
+
+<!--{{commentsList}}-->
+<app-comment-form (addComment)="newComment($event)" [movieId]="movieId"></app-comment-form>
+<comment-list [(commentsList)]="commentsList"></comment-list>

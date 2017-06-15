@@ -10,25 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var CommentListComponent = (function () {
-    function CommentListComponent() {
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+var VoteService = (function () {
+    function VoteService(http) {
+        this.http = http;
+        this.url = 'http://localhost:3000/vote';
     }
-    CommentListComponent.prototype.ngOnInit = function () {
-        console.log(this.commentsList);
+    VoteService.prototype.getAllVotes = function (movieId) {
+        return this.http.get(this.url + '/' + movieId).map(this.generateVote);
     };
-    return CommentListComponent;
+    VoteService.prototype.generateVote = function (response) {
+        var res = response.json();
+        var vote = {
+            movieId: res[0].movieId,
+            rating: res[0].rating,
+            collVoters: res[0].collVoters,
+        };
+        // console.log(vote);
+        return vote;
+    };
+    return VoteService;
 }());
-__decorate([
-    core_1.Input('commentsList'),
-    __metadata("design:type", Array)
-], CommentListComponent.prototype, "commentsList", void 0);
-CommentListComponent = __decorate([
-    core_1.Component({
-        selector: 'comment-list',
-        templateUrl: './comment-list.component.html',
-        styleUrls: ['./comment-list.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], CommentListComponent);
-exports.CommentListComponent = CommentListComponent;
-//# sourceMappingURL=comment-list.component.js.map
+VoteService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], VoteService);
+exports.VoteService = VoteService;
+//# sourceMappingURL=vote.service.js.map

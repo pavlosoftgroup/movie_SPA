@@ -1,11 +1,11 @@
 <!--<md-card>-->
-    <form action="">
+    <form (ngSubmit)="onSubmit([userName,commentText])" #heroForm="ngForm" >
         <md-input-container class="full-width ">
             <input mdInput placeholder="Your Name" name="userName" [(ngModel)]="userName">
         </md-input-container>
         <md-input-container class="full-width ">
             <textarea mdInput placeholder="Your Comment" name="comment" [(ngModel)]="commentText"></textarea>
         </md-input-container>
-            <button color="accent" md-raised-button (click)="addComment(event)">Add Comment</button>
+            <button color="accent" md-raised-button>Add Comment</button>
     </form>
 <!--</md-card>-->

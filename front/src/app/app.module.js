@@ -29,6 +29,9 @@ var movies_list_component_1 = require("./movies/movies-list/movies-list.componen
 var comment_component_1 = require("./comment/comment.component");
 var comment_form_component_1 = require("./comment/comment-form/comment-form.component");
 var comment_list_component_1 = require("./comment/comment-list/comment-list.component");
+var comments_service_1 = require("./comment/comments.service");
+var vote_component_1 = require("./vote/vote.component");
+var vote_service_1 = require("./vote/vote.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -50,6 +53,7 @@ AppModule = __decorate([
             comment_component_1.CommentComponent,
             comment_form_component_1.CommentFormComponent,
             comment_list_component_1.CommentListComponent,
+            vote_component_1.VoteComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
@@ -63,8 +67,12 @@ AppModule = __decorate([
             router_1.RouterModule,
             top_menu_module_1.TopMenuModule,
             top_menu_routing_module_1.TopMenuRoutingModule,
+            http_1.HttpModule,
+            http_1.JsonpModule,
+            material_1.MdListModule,
+            material_1.MdGridListModule
         ],
-        providers: [movies_service_1.MoviesService],
+        providers: [movies_service_1.MoviesService, comments_service_1.CommentsService, vote_service_1.VoteService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

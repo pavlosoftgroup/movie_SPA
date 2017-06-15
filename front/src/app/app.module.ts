@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {MaterialModule, MdCardModule, MdInputModule} from '@angular/material';
+import {HttpModule, JsonpModule} from '@angular/http';
+import {MaterialModule, MdCardModule, MdGridListModule, MdInputModule, MdListModule} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import 'hammerjs';
@@ -24,6 +24,9 @@ import { MoviesListComponent } from './movies/movies-list/movies-list.component'
 import { CommentComponent } from './comment/comment.component';
 import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import {CommentsService} from "./comment/comments.service";
+import { VoteComponent } from './vote/vote.component';
+import {VoteService} from "./vote/vote.service";
 
 @NgModule({
     declarations: [
@@ -40,6 +43,7 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
         CommentComponent,
         CommentFormComponent,
         CommentListComponent,
+        VoteComponent,
     ],
     imports: [
         BrowserModule,
@@ -53,9 +57,13 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
         RouterModule,
         TopMenuModule,
         TopMenuRoutingModule,
+        HttpModule,
+        JsonpModule,
+        MdListModule,
+        MdGridListModule
 
     ],
-    providers: [MoviesService],
+    providers: [MoviesService, CommentsService, VoteService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

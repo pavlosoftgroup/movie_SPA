@@ -1,0 +1,13 @@
+
+<md-card class="right">
+
+    <span *ngFor="let star of stars">
+        <button md-mini-fab (click)="addStars(star.number)">
+
+  <md-icon>{{star.status}}</md-icon>
+
+        </button>
+
+
+    </span>
+</md-card>

@@ -10,20 +10,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var comments_service_1 = require("./comments.service");
 var CommentComponent = (function () {
-    function CommentComponent() {
+    function CommentComponent(activatedRoute, commentsService) {
+        this.activatedRoute = activatedRoute;
+        this.commentsService = commentsService;
+        this.commentsList = [];
     }
     CommentComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activatedRoute.params.forEach(function (params) {
+            _this.movieId = params['id'];
+            _this.commentsService.getComments(_this.movieId)
+                .subscribe(function (comments) { return _this.commentsList = comments; }, function () { console.log('ERROR'); }, function () { console.log(this.errorMessage); });
+            //     .subscribe(
+            //         function(response: any) { console.log("Success Response" + response )},
+            //         function(error: any) { console.log("Error happened" + error)},
+            //         function() { console.log("the subscription is completed")}
+            //     );
+        });
+    };
+    CommentComponent.prototype.newComment = function (comment) {
+        var _this = this;
+        console.log(comment);
+        var leaderStr = JSON.stringify(comment);
+        // comment = JSON.parse(leaderStr);
+        this.commentsService.createComment(leaderStr)
+            .subscribe(function (result) { return _this.errorMessage = result; }, function (error) { return _this.errorMessage = error; });
+        this.commentsList.push(comment);
     };
     return CommentComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], CommentComponent.prototype, "movieId", void 0);
 CommentComponent = __decorate([
     core_1.Component({
         selector: 'app-comment',
         templateUrl: './comment.component.html',
         styleUrls: ['./comment.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        comments_service_1.CommentsService])
 ], CommentComponent);
 exports.CommentComponent = CommentComponent;
 //# sourceMappingURL=comment.component.js.map
