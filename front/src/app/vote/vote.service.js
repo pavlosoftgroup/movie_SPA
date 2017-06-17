@@ -27,7 +27,7 @@ var VoteService = (function () {
             rating: res[0].rating,
             collVoters: res[0].collVoters,
         };
-        // console.log(vote);
+        console.log(vote);
         return vote;
     };
     return VoteService;

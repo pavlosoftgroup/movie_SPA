@@ -9,8 +9,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "basic-logger": "^0.4.4",
     "body-parser": "^1.17.2",
+    "connect": "^3.6.2",
+    "connect-flash": "^0.1.1",
+    "connect-memcached": "^0.2.0",
+    "cookie-session": "^2.0.0-beta.2",
+    "errorhandler": "^1.5.0",
     "express": "^4.15.3",
-    "mongodb": "^2.2.28"
+    "express-session": "^1.15.3",
+    "method-override": "^2.3.9",
+    "mongodb": "^2.2.28",
+    "morgan": "^1.8.2",
+    "nconf": "^0.8.4",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0"
   }
 }

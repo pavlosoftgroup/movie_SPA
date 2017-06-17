@@ -16,16 +16,16 @@ export class VoteService {
         return this.http.get(this.url + '/' + movieId).map(this.generateVote);
     }
 
-    generateVote(response: Response) {
+    private generateVote(response: Response) {
         let res = response.json();
 
-        let vote = {
+        let vote: Vote = {
                 movieId: res[0].movieId,
                 rating: res[0].rating,
             collVoters: res[0].collVoters,
 
             };
-        // console.log(vote);
+        console.log(vote);
         return vote;
 
 

@@ -4,7 +4,7 @@
     <span *ngFor="let star of stars">
         <button md-mini-fab (click)="addStars(star.number)">
 
-  <md-icon>{{star.status}}</md-icon>
+  <md-icon *ngIf="star.status" (hover)="hidenStar()">{{star.name}}</md-icon>
 
         </button>
 

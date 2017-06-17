@@ -15,7 +15,6 @@ export class CommentsService {
     getComments(id: string): Observable<Comment[]> {
        let erty =  this.http.get(this.url+'/'+id).map(res => res.json());
         // .catch(this.handleError)
-        console.log(erty);
         return erty;
 
 
@@ -35,13 +34,17 @@ export class CommentsService {
     extractOne(res: Response){
 
         let response = res.json().data;
-        let result =  new Comment(
+      let date =   new Date(+response.date);
+      console.log(date);
+
+
+            let result =  new Comment(
             // response._id,
             response.movieId,
             response.autor,
             response.text,
-            Number(response.date),
-        )
+                response.date
+        );
         return result;
     }
 

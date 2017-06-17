@@ -1,0 +1,8 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.example-full-width {
+    width: 100%;
+}
+.mat-input-invalid .ng-invalid{
+    color: red !important;
+}

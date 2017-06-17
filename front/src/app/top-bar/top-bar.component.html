@@ -1,9 +1,14 @@
-
-
-<md-toolbar color="primary">
-  <top-menu></top-menu>
-
-
+<md-toolbar color="primary">    <!--<md-toolbar-row>-->
+    <span>
+    <top-menu></top-menu>
+    </span>
+    <span class="example-spacer"></span>    <!--<button md-mini-fab>-->
+    <a routerLink="/user">
+        <md-icon class="example-icon">account_box</md-icon>
+    </a>
+    <a routerLink="/info">
+        <md-icon class="example-icon">info_outline</md-icon>
+    </a>
 </md-toolbar>
 
 

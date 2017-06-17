@@ -1,8 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
-import {MaterialModule, MdCardModule, MdGridListModule, MdInputModule, MdListModule} from '@angular/material';
+import {
+    MaterialModule, MdCardHeader, MdCardModule, MdGridListModule, MdInputModule,
+    MdListModule
+} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import 'hammerjs';
@@ -27,6 +30,14 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
 import {CommentsService} from "./comment/comments.service";
 import { VoteComponent } from './vote/vote.component';
 import {VoteService} from "./vote/vote.service";
+// import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { LoginFormComponent } from './user/login/login-form/login-form.component';
+import { RegisterFormComponent } from './user/login/register-form/register-form.component';
+import {UserModule} from "./user/user.module";
+import {UserRoutingModule} from "./user/user-routing.module";
+import {RestorePasswordComponent} from "./user/restore-password/restore-password.component";
+import {UserComponent} from "./user/user.component";
 
 @NgModule({
     declarations: [
@@ -44,11 +55,21 @@ import {VoteService} from "./vote/vote.service";
         CommentFormComponent,
         CommentListComponent,
         VoteComponent,
+        UserComponent,
+        RestorePasswordComponent,
+        LoginComponent,
+        RegisterFormComponent,
+        LoginFormComponent,
+        // TopMenuComponent,
+        // UserComponent,
+
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        UserModule,
         FormsModule,
+        // UserRoutingModule,
         HttpModule,
         MdToolbarModule,
         MdIconModule,
@@ -60,7 +81,10 @@ import {VoteService} from "./vote/vote.service";
         HttpModule,
         JsonpModule,
         MdListModule,
-        MdGridListModule
+        MdGridListModule,
+        ReactiveFormsModule,
+        // MdCardHeader,
+        // UserRoutingModule
 
     ],
     providers: [MoviesService, CommentsService, VoteService],

@@ -1,0 +1,27 @@
+<md-card>
+
+    <md-card-content>
+        <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)"
+        >
+            <md-input-container class="example-full-width">
+                <input formControlName="login" mdInput placeholder="Login" [ngClass]="{'mat-input-error': loginForm.get('login').hasError('required') &&
+            loginForm.get('login').touched}">
+            </md-input-container>
+            <div *ngIf="loginForm.get('login').hasError('required') &&
+            loginForm.get('login').touched" class="alert mat-input-error">required field
+            </div>
+            <md-input-container class="example-full-width">
+                <input formControlName="password" mdInput placeholder="Password">
+            </md-input-container>
+            <div *ngIf="loginForm.get('password').hasError('required') &&
+            loginForm.get('password').touched" class="alert mat-input-error">required field
+            </div>
+            <div *ngIf="loginForm.get('password').hasError('minlength') &&
+            loginForm.get('password').touched" class="alert mat-input-error">string too short
+            </div>
+            <button md-raised-button type="submit" [disabled]="loginForm.invalid">Log In</button>
+            <a  md-raised-button routerLink="/registration">Registration</a>
+            <a md-raised-button routerLink="/restore" >Restore Password</a>
+        </form>
+    </md-card-content>
+</md-card>

@@ -1,5 +1,10 @@
-<md-toolbar color="primary" class="comment-header">
-    <h2>Comments</h2><app-vote class="right" [movieId]="movieId"></app-vote></md-toolbar>
+<!--<md-toolbar color="primary" class="comment-header">-->
+    <md-toolbar-row>
+        <span>Comments</span>
+        <span class="example-spacer"></span>
+        <app-vote class="right" [movieId]="movieId"></app-vote>
+    </md-toolbar-row>
+<!--</md-toolbar>-->
 
 
 <!--{{commentsList}}-->

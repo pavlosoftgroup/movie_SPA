@@ -1,0 +1,6 @@
+.example-full-width {
+    width: 100%;
+}
+.mat-input-invalid .ng-invalid{
+    color: red !important;
+}

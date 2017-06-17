@@ -32,6 +32,13 @@ var comment_list_component_1 = require("./comment/comment-list/comment-list.comp
 var comments_service_1 = require("./comment/comments.service");
 var vote_component_1 = require("./vote/vote.component");
 var vote_service_1 = require("./vote/vote.service");
+// import { UserComponent } from './user/user.component';
+var login_component_1 = require("./user/login/login.component");
+var login_form_component_1 = require("./user/login/login-form/login-form.component");
+var register_form_component_1 = require("./user/login/register-form/register-form.component");
+var user_module_1 = require("./user/user.module");
+var restore_password_component_1 = require("./user/restore-password/restore-password.component");
+var user_component_1 = require("./user/user.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -54,11 +61,18 @@ AppModule = __decorate([
             comment_form_component_1.CommentFormComponent,
             comment_list_component_1.CommentListComponent,
             vote_component_1.VoteComponent,
+            user_component_1.UserComponent,
+            restore_password_component_1.RestorePasswordComponent,
+            login_component_1.LoginComponent,
+            register_form_component_1.RegisterFormComponent,
+            login_form_component_1.LoginFormComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
             animations_1.BrowserAnimationsModule,
+            user_module_1.UserModule,
             forms_1.FormsModule,
+            // UserRoutingModule,
             http_1.HttpModule,
             material_2.MdToolbarModule,
             material_3.MdIconModule,
@@ -70,7 +84,8 @@ AppModule = __decorate([
             http_1.HttpModule,
             http_1.JsonpModule,
             material_1.MdListModule,
-            material_1.MdGridListModule
+            material_1.MdGridListModule,
+            forms_1.ReactiveFormsModule,
         ],
         providers: [movies_service_1.MoviesService, comments_service_1.CommentsService, vote_service_1.VoteService],
         bootstrap: [app_component_1.AppComponent]

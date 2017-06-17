@@ -14,7 +14,7 @@ var CommentListComponent = (function () {
     function CommentListComponent() {
     }
     CommentListComponent.prototype.ngOnInit = function () {
-        console.log(this.commentsList);
+        // console.log(this.commentsList);
     };
     return CommentListComponent;
 }());

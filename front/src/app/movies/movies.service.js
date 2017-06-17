@@ -34,7 +34,7 @@ var MoviesService = (function () {
             // console.log(resp.json());
             var usersList = resp.json();
             var usersLists = usersList.results;
-            console.log(usersList.results);
+            // console.log(usersList.results);
             var movies = [];
             for (var index in usersLists) {
                 // console.log(usersLists[index]);
@@ -47,7 +47,7 @@ var MoviesService = (function () {
                     plot: movie.overview,
                 });
             }
-            console.log(movies);
+            // console.log(movies);
             return movies;
         });
         // .flatMap((response) => response.json())

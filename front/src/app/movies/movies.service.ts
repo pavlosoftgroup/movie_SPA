@@ -30,7 +30,7 @@ export class MoviesService {
 
                 let usersList = resp.json();
                 let usersLists = usersList.results;
-                console.log(usersList.results);
+                // console.log(usersList.results);
 
                 let movies: Movie[] = [];
                 for (let index in usersLists) {
@@ -44,7 +44,7 @@ export class MoviesService {
                         plot: movie.overview,
                     });
                 }
-                console.log(movies);
+                // console.log(movies);
 
                 return movies;
             });

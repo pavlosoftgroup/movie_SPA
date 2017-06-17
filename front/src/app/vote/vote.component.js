@@ -15,6 +15,16 @@ var vote_1 = require("./vote");
 var VoteComponent = (function () {
     function VoteComponent(voteService) {
         this.voteService = voteService;
+        this.voteRating = new vote_1.Vote('', '', '');
+        // )
+        // {
+        //          movieId:'',
+        //          rating:'',
+        //          collVoters:'',
+        //
+        //      };
+        //          = new Vote(
+        //
         this.voteRatingInPage = {
             movieId: '155',
             rating: '4',
@@ -24,17 +34,21 @@ var VoteComponent = (function () {
     }
     VoteComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.voteService.getAllVotes(this.movieId).subscribe(function (res) { return _this.voteRating = res; });
+        this.voteService.getAllVotes(this.movieId).subscribe(function (res) {
+            _this.voteRating = res;
+            // return this.voteRating;
+            for (var i = 1; i < 6; i++) {
+                var status_1 = i < +_this.voteRating.rating ? 'star' : 'star_border';
+                _this.star = {
+                    status: true,
+                    number: i,
+                    name: status_1
+                };
+                _this.stars.push(_this.star);
+            }
+        });
         // console.log(aaa);
         console.log(this.voteRating);
-        for (var i = 1; i < 6; i++) {
-            var status = 1 < +this.voteRating.rating ? 'star' : 'star_border';
-            var star = {
-                status: status,
-                number: i,
-            };
-            this.stars.push(star);
-        }
         // console.log(this.stars);
     };
     VoteComponent.prototype.addStars = function (number) {
@@ -45,6 +59,9 @@ var VoteComponent = (function () {
         var newVoteRating = new vote_1.Vote(this.movieId, String(ratingNow), String(callVotersNow));
         console.log(this.voteRating);
         console.log(newVoteRating);
+    };
+    VoteComponent.prototype.hidenStar = function () {
+        this.star.status = !this.star.status;
     };
     return VoteComponent;
 }());
