@@ -12,14 +12,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var person_1 = require("./person");
+// import Result = jasmine.Result;
 var PersonService = (function () {
     function PersonService(http) {
         this.http = http;
         this.usr = "https://api.themoviedb.org/3/search/person?include_adult=false&page=1&api_key=b4cb68303a91f7b393e47305973fe19e&query=";
+        this.pageUrl = "https://api.themoviedb.org/3/person/";
+        this.pageUrlAlias = "?language=en-US&api_key=b4cb68303a91f7b393e47305973fe19e";
         this.tetxSearch = "a";
     }
     PersonService.prototype.getPersons = function () {
         return this.http.get(this.usr + this.tetxSearch).map(this.generatePerson);
+    };
+    PersonService.prototype.getOnePerson = function (id) {
+        return this.http.get(this.pageUrl + id + this.pageUrlAlias)
+            .map(this.generateOnePerson);
+    };
+    PersonService.prototype.generateOnePerson = function (response) {
+        var res = response.json();
+        console.log(res);
+        var person = new person_1.Person(res.name, res.id, res.profile_path, res.biography, res.birthday, res.place_of_birth, res.popularity);
+        console.log(person);
+        return person;
     };
     PersonService.prototype.generatePerson = function (response) {
         var res = response.json();
@@ -28,7 +42,7 @@ var PersonService = (function () {
         for (var _i = 0, _a = res.results; _i < _a.length; _i++) {
             var i = _a[_i];
             console.log(i.name);
-            var person = new person_1.Person(i.name, String(i.id), i.profile_path);
+            var person = new person_1.Person(i.name, String(i.id), i.profile_path, '', '');
             //     = {
             //     name: res[i].name,
             //     personId: String(res[i].id),

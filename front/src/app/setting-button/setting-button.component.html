@@ -1,0 +1,6 @@
+<button md-fab *ngIf="viewStatus" (click)="eventClick(viewStatus)">
+  <md-icon class="md-18">view_list</md-icon>
+</button>
+<button md-fab *ngIf="!viewStatus" (click)="eventClick(viewStatus)">
+  <md-icon class="md-18">view_day</md-icon>
+</button>

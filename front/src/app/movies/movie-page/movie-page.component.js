@@ -28,8 +28,6 @@ var MoviePageComponent = (function () {
         });
         // this.OneMovie()
     };
-    MoviePageComponent.prototype.OneMovie = function (id) {
-    };
     return MoviePageComponent;
 }());
 MoviePageComponent = __decorate([

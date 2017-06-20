@@ -2,3 +2,7 @@ front/node_modules/
 server/http-host/node_module/
 server/http-host/public/images/
 server/http-host/public/javascripts/
+express-authentication/node_modules/
+express-server/node_modules/
+custom-express/node_modules/
+

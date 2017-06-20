@@ -34,7 +34,7 @@ var MoviesService = (function () {
             // console.log(resp.json());
             var usersList = resp.json();
             var usersLists = usersList.results;
-            // console.log(usersList.results);
+            console.log(usersList.results);
             var movies = [];
             for (var index in usersLists) {
                 // console.log(usersLists[index]);
@@ -63,7 +63,6 @@ var MoviesService = (function () {
     };
     MoviesService.prototype.extractMovie = function (response) {
         var res = response.json();
-        // console.log(res);
         return {
             id: res.id,
             title: res.original_title,
