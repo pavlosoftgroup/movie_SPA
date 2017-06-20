@@ -16,7 +16,7 @@ var comment_1 = require("./comment");
 var CommentsService = (function () {
     function CommentsService(http) {
         this.http = http;
-        this.url = "http://localhost:3000/comments";
+        this.url = "http://localhost:3002/comments";
     }
     CommentsService.prototype.getComments = function (id) {
         var erty = this.http.get(this.url + '/' + id).map(function (res) { return res.json(); });

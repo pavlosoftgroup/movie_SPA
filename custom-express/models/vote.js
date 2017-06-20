@@ -1,4 +1,4 @@
-// var mongoose = require('mongoose');
+var ObjectID = require('mongodb').ObjectID;
 var db = require('../db');
 
 exports.all = function(movieId ,cb) {

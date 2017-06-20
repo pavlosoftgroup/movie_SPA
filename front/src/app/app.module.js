@@ -39,6 +39,10 @@ var register_form_component_1 = require("./user/login/register-form/register-for
 var user_module_1 = require("./user/user.module");
 var restore_password_component_1 = require("./user/restore-password/restore-password.component");
 var user_component_1 = require("./user/user.component");
+var pages_component_1 = require("./pages/pages.component");
+var info_page_component_1 = require("./pages/info-page/info-page.component");
+var person_component_1 = require("./person/person.component");
+var person_module_1 = require("./person/person.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -66,11 +70,15 @@ AppModule = __decorate([
             login_component_1.LoginComponent,
             register_form_component_1.RegisterFormComponent,
             login_form_component_1.LoginFormComponent,
+            pages_component_1.PagesComponent,
+            info_page_component_1.InfoPageComponent,
+            person_component_1.PersonComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
             animations_1.BrowserAnimationsModule,
             user_module_1.UserModule,
+            person_module_1.PersonModule,
             forms_1.FormsModule,
             // UserRoutingModule,
             http_1.HttpModule,

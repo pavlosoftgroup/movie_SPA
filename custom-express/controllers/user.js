@@ -1,4 +1,4 @@
-var Votes = require('../models/vote');
+var User = require('../models/user');
 
 exports.all = function (req, res) {
     var movieId = req.params.id;

@@ -3,38 +3,11 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var connect = require('connect');
 var flash = require("connect-flash");
+// var mongoClient = require('mongodb').MongoClient;
 var cookieParser = require('cookie-parser');
+var mongoose = require('mongoose');
 var db = require('./db');
 require('./passport');
-
-
-// Configure the local strategy for use by Passport.
-//
-// The local strategy require a `verify` function which receives the credentials
-// (`username` and `password`) submitted by the user.  The function must verify
-// that the password is correct and then invoke `cb` with a user object, which
-// will be set at `req.user` in route handlers after authentication.
-
-
-
-// Configure Passport authenticated session persistence.
-//
-// In order to restore authentication state across HTTP requests, Passport needs
-// to serialize users into and deserialize users out of the session.  The
-// typical implementation of this is as simple as supplying the user ID when
-// serializing, and querying the user record by ID from the database when
-// deserializing.
-// passport.serializeUser(function(user, cb) {
-//     cb(null, user.id);
-// });
-//
-// passport.deserializeUser(function(id, cb) {
-//     db.users.findById(id, function (err, user) {
-//         if (err) { return cb(err); }
-//         cb(null, user);
-//     });
-// });
-
 
 // Create a new Express application.
 var app = express();
@@ -47,7 +20,7 @@ app.set('view engine', 'ejs');
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
 app.use(require('morgan')('combined'));
-app.use(require('cookie-parser')());
+app.use(cookieParser());
 app.use(require('body-parser').urlencoded({extended: true}));
 app.use(require('express-session')({
     secret: 'keyboard cat',
@@ -67,9 +40,10 @@ app.use(cookieParser());
 // session.
 app.use(passport.initialize());
 app.use(passport.session());
-var votesController = require('./controllers/vote');
+// var votesController = require('./controllers/vote');
 var userController = require('./controllers/user');
 var commentsController = require('./controllers/comments');
+var routeVoteContrOller = require('./routes/vote');
 
 
 // require('./passport')(app);
@@ -149,6 +123,8 @@ app.use(function (req, res, next) {
 //
 passport.use('basic', new Strategy(
     function (userid, password, done) {
+        console.log();
+
         User.findOne({username: userid}, function (err, user) {
             if (err) {
                 return done(err);
@@ -276,18 +252,15 @@ app.post('/user-registrator', userController.create);
 
 // app.get('/user', userController);
 
-app.get('/vote/:id', votesController.all);
 
-app.post('/vote', votesController.post);
+// app.get('/vote/:id', votesController.all);
 
-app.put('/vote/:id', function (req, res) {
-    console.log(req.body);
-    db.collection()
-})
+app.use('/vote', routeVoteContrOller);
+
 
 app.get('/', function (req, res) {
     res.send('hellow')
-})
+});
 
 app.post('/comments', commentsController.create);
 app.get('/comments/:id', commentsController.return);
@@ -317,17 +290,21 @@ app.get('/comments/:id', commentsController.return);
 //     )
 // })app.listen(3000);
 
-
-db.connect('mongodb://localhost:27017/comments', function (err, database) {
-    if (err) {
-        return console.log(err);
-    }
+//
+// mongoose.connect('mongoose://localhost/comments', function (err, database) {
+//     if (err) {
+//         return console.log(err);
+//     }
+// })
     app.listen(3000, function () {
         // app.listen(app.get('port'), function () {
+        // mongoose.connect('mongodb://localhost/comments');
+
         if ('development' === app.get('env')) {
             console.log('Express server listening on port 3000');
         }
         // });
         // console.log('API app started');
     });
-})
+
+

@@ -38,6 +38,10 @@ import {UserModule} from "./user/user.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {RestorePasswordComponent} from "./user/restore-password/restore-password.component";
 import {UserComponent} from "./user/user.component";
+import { PagesComponent } from './pages/pages.component';
+import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { PersonComponent } from './person/person.component';
+import {PersonModule} from "./person/person.module";
 
 @NgModule({
     declarations: [
@@ -60,6 +64,9 @@ import {UserComponent} from "./user/user.component";
         LoginComponent,
         RegisterFormComponent,
         LoginFormComponent,
+        PagesComponent,
+        InfoPageComponent,
+        PersonComponent,
         // TopMenuComponent,
         // UserComponent,
 
@@ -68,6 +75,7 @@ import {UserComponent} from "./user/user.component";
         BrowserModule,
         BrowserAnimationsModule,
         UserModule,
+        PersonModule,
         FormsModule,
         // UserRoutingModule,
         HttpModule,

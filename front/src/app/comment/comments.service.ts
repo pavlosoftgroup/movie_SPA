@@ -7,7 +7,7 @@ import {Comment} from "./comment";
 
 @Injectable()
 export class CommentsService {
-    private url = "http://localhost:3000/comments";
+    private url = "http://localhost:3002/comments";
 
     constructor(private http: Http) {
     }
